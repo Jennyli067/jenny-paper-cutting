@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Cuttings Art</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaini+Purva&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        .introduction {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin: 25px auto 35px;
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.08);
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 192, 192, 0.5);
+        }
+        
+        .introduction p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #444;
+            margin: 0;
+        }
+        
+        .introduction::before,
+        .introduction::after {
+            content: '✂';
+            position: absolute;
+            color: #8b0000;
+            font-size: 20px;
+            opacity: 0.7;
+        }
+        
+        .introduction::before {
+            top: 10px;
+            left: 10px;
+            transform: rotate(-45deg);
+        }
+        
+        .introduction::after {
+            bottom: 10px;
+            right: 10px;
+            transform: rotate(135deg);
+        }
+        
+        /* Footer*/
+        .footer {
+            background-color: rgba(255, 219, 219, 0.8);
+            border-radius: 50px;
+            padding: 15px 30px;
+            margin: 40px auto 20px;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 5px 0;
+            scrollbar-width: none; 
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        .footer-nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .footer-nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 5px 12px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: #8b0000;
+        }
+        
+        .copyright {
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: #666;
+        }
+        
+        @media (min-width: 768px) {
+            .introduction {
+                padding: 25px 35px;
+                margin: 30px auto 40px;
+            }
+            
+            .introduction p {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+            
+            .footer {
+                padding: 20px 40px;
+            }
+            
+            .footer-nav {
+                gap: 25px;
+            }
+            
+            .footer-nav a {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+            
+            .copyright {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .introduction {
+                padding: 30px 50px;
+                max-width: 960px;
+            }
+            
+            .introduction p {
+                font-size: 1.1rem;
+                line-height: 1.9;
+            }
+            
+            .footer {
+                max-width: 960px;
+                padding: 25px 50px;
+            }
+            
+            .footer-nav {
+                gap: 30px;
+            }
+            
+            .footer-nav a {
+                font-size: 1.0rem;
+                padding: 10px 20px;
+            }
+            
+            .copyright {
+                font-size: 0.9rem;
+                margin-top: 15px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .introduction {
+                max-width: 1140px;
+                padding: 35px 60px;
+            }
+            
+            .footer {
+                max-width: 1140px;
+            }
+            
+            .footer-nav a {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <header>
+                <h1 class="site-title">Paper Cuttings Art</h1>
+            </header>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#daily-recommendations" class="active">Daily recommendations</a></li>
+                    <li><a href="#types-of-paper-cuttings">Types of Paper Cuttings</a></li>
+                    <li><a href="#author-introduction">Author Introduction</a></li>
+                </ul>
+            </nav>
+            
+
+            <div class="introduction">
+                <p>Chinese paper-cutting, or "Jianzhi," is a traditional folk art that dates back to the 6th century. It involves cutting intricate designs into paper, often using scissors or knives. The art form is deeply rooted in Chinese culture and is commonly used to celebrate festivals, decorate windows, and express good wishes. Common motifs include animals, flowers, and symbolic figures like the Chinese zodiac signs. Chinese paper-cutting is recognized for its delicate craftsmanship and vibrant colors, representing prosperity, happiness, and good fortune. It has been listed as an intangible cultural heritage by UNESCO.</p>
+            </div>
+            
+            <section id="daily-recommendations" class="daily-recommendations">
+                <h2>Daily recommendations</h2>
+                
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="images/22.png" alt="Application of Paper Cuttings" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>Application of Paper Cuttings</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                        <img src="images/45.png" alt="History of Paper Cuttings" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>The origin of Paper Cuttings</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                        <img src="images/46.png" alt="Techniques of Paper Cuttings" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>Paper Cuttings appreciation</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="dots-container">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                    
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+            </section>
+
+            <section id="types-of-paper-cuttings" class="types-section">
+                <h2>Types of Paper Cuttings</h2>
+                
+                <div class="type-card">
+                    <a href="detail.html" class="type-link" data-category="animals">
+                        <div class="type-image-container">
+                            <img src="images/49.png" alt="Animal Paper Cuttings Left" class="type-image left">
+                            <img src="images/48.png" alt="Animal Paper Cuttings Right" class="type-image right">
+                            <div class="image-label">Animals</div>
+                        </div>
+                        <div class="type-content">
+                            <h3>Animals</h3>
+                            <p class="type-description">
+                                Animal Paper Cuttings is very close to people's life and can be seen everywhere in daily life
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="type-card">
+                    <a href="detail.html" class="type-link" data-category="architecture">
+                        <div class="type-image-container">
+                            <img src="images/51.png" alt="Architecture Paper Cuttings Left" class="type-image left">
+                            <img src="images/50.png" alt="Architecture Paper Cuttings Right" class="type-image right centered">
+                            <div class="image-label">Architecture</div>
+                        </div>
+                        <div class="type-content">
+                            <h3>Architecture</h3>
+                            <p class="type-description">
+                                Architectural Paper Cuttings is grand and beautiful
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="type-card">
+                    <a href="detail.html" class="type-link" data-category="portrait">
+                        <div class="type-image-container">
+                            <img src="images/51.png" alt="Portrait Paper Cuttings Left" class="type-image left">
+                            <img src="images/52.png" alt="Portrait Paper Cuttings Right" class="type-image right">
+                            <div class="image-label">Portrait</div>
+                        </div>
+                        <div class="type-content">
+                            <h3>Portrait</h3>
+                            <p class="type-description">
+                                The Paper Cuttings characters are exquisite and beautiful, and people love it very much
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="type-card">
+                    <a href="detail.html" class="type-link" data-category="window-grilles">
+                        <div class="type-image-container">
+                            <img src="images/55.png" alt="Window Grilles Paper Cuttings Left" class="type-image left">
+                            <img src="images/54.png" alt="Window Grilles Paper Cuttings Right" class="type-image right">
+                            <div class="image-label">Window grilles</div>
+                        </div>
+                        <div class="type-content">
+                            <h3>Window grilles</h3>
+                            <p class="type-description">
+                                Window Paper Cuttings is widely used
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section id="author-introduction" class="author-section">
+                <h2>Author Introduction</h2>
+                <a href="writer_introduction.html" class="author-link">
+                    <div class="author-card">
+                        <img src="images/21.png" alt="Paper Cutting Author" class="author-image">
+                        <div class="author-overlay">
+                            <h3>Learn more</h3>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            
+            <!-- add footer -->
+            <footer class="footer">
+                <div class="footer-nav">
+                    <a href="#daily-recommendations">Daily recommendations</a>
+                    <a href="#types-of-paper-cuttings">Types of Paper Cuttings</a>
+                    <a href="#author-introduction">Author Introduction</a>
+                </div>
+                <div class="copyright">
+                    © 2025 Jenny Paper Cuttings Art. jennyli@ocadu.ca
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
