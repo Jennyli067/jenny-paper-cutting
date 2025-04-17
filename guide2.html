@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Cutting Art</title>
+    <link rel="stylesheet" href="css/guide-transitions.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: url('images/bd-bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 200vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .page {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .last-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: visible;
+            padding: 50px 0;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .decoration-image {
+            width: 70%;
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        
+        .title-section {
+            text-align: center;
+            width: 100%;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            font-size: 5rem;
+            color: #8b0000;
+            text-transform: lowercase;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            letter-spacing: -2px;
+            margin-bottom: 50px;
+        }
+
+        .welcome-text {
+            color: #8b0000;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .description-text {
+            color: #666;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #8b0000;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.8;
+        }
+
+        .scroll-icon {
+            width: 30px;
+            height: 50px;
+            border: 2px solid #8b0000;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .scroll-icon::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #8b0000;
+            border-radius: 50%;
+            left: 50%;
+            top: 8px;
+            transform: translateX(-50%);
+            animation: scrollAnim 1.5s infinite;
+        }
+
+        @keyframes scrollAnim {
+            0% {
+                top: 8px;
+                opacity: 1;
+            }
+            100% {
+                top: 36px;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+                margin-bottom: 30px;
+            }
+            .decoration-image {
+                width: 85%;
+            }
+            .welcome-text {
+                font-size: 1.8rem;
+            }
+            .description-text {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body class="guide-page">
+    <div class="page">
+        <div class="content-wrapper">
+            <img src="images/25.png" alt="剪纸艺术" class="decoration-image">
+        </div>
+        <div class="scroll-hint">
+            <div class="scroll-icon"></div>
+            <div>Roll down</div>
+        </div>
+    </div>
+    <div class="last-page">
+        <div class="content-wrapper">
+            <div class="title-section">
+                <img src="images/init-text.png" alt="剪纸艺术" class="">
+                <div class="welcome-text">Welcome to Chinese Paper-cutting Art</div>
+                <div class="description-text">
+                    Paper-cutting is one of the oldest and most popular folk arts in China. 
+                    This traditional craft involves cutting paper into delicate patterns and designs,
+                    often used for decorative purposes and special occasions.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstPage = document.querySelector('.page');
+            let touchStartY = 0;
+            let touchEndY = 0;
+
+            firstPage.addEventListener('touchstart', function(e) {
+                touchStartY = e.touches[0].clientY;
+            });
+
+            firstPage.addEventListener('touchend', function(e) {
+                touchEndY = e.changedTouches[0].clientY;
+                if (touchStartY - touchEndY > 50) { 
+                    window.scrollTo({
+                        top: window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+
+      
+            window.addEventListener('scroll', function() {
+                if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
+                    // Set a short delay to let the user know that they have reached the bottom
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 300);
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
