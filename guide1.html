@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Cutting Art</title>
+    <link rel="stylesheet" href="css/guide-transitions.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: url('images/bd-bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .content-wrapper {
+            padding-top: 150px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .content {
+            text-align: center;
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 5rem;
+            color: #8b0000;
+            text-transform: lowercase;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            letter-spacing: -2px;
+        }
+
+        .decoration-image {
+            position: absolute;
+            left: 5%;
+            bottom: 10%;
+            width: 40%;
+            max-width: 500px;
+            z-index: 0;
+            animation: slideInLeft 1.5s ease-out forwards;
+            transform: translateX(-100%);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .decoration-image {
+                width: 60%;
+                left: -10%;
+                bottom: 5%;
+            }
+        }
+    </style>
+</head>
+<body class="guide-page">
+    <div class="content-wrapper">
+        <div class="content">
+            <img src="images/init-text.png" alt="剪纸艺术" class="">
+        </div>
+        <img src="images/24.png" alt="剪纸艺术" class="decoration-image">
+    </div>
+    <script src="js/guide-transitions.js"></script>
+</body>
+</html> 
