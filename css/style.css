@@ -1,6 +1,6 @@
-/* 全局样式 */
+
 :root {
-    --main-bg-color: #ffc0c0; /* 粉色背景 */
+    --main-bg-color: #ffc0c0;
     --text-color: #000;
     --nav-bg-color: #fff;
     --card-overlay-color: rgba(0, 0, 0, 0.3);
@@ -23,7 +23,6 @@ body {
     line-height: 1.6;
 }
 
-/* 添加一个背景覆盖层，增加内容可读性 */
 .page-wrapper {
     position: relative;
     min-height: 100vh;
@@ -38,7 +37,6 @@ body {
     z-index: 1;
 }
 
-/* 标题样式 */
 h1, h2, h3 {
     font-family: 'Jaini Purva', cursive;
     font-weight: normal;
@@ -50,7 +48,6 @@ h1, h2, h3 {
     margin: 30px 0;
 }
 
-/* 导航栏样式 */
 .main-nav {
     background-color: rgba(255, 219, 219, 0.8);
     border-radius: 50px;
@@ -91,7 +88,6 @@ h1, h2, h3 {
 }
 
 
-/* 每日推荐部分 */
 .daily-recommendations h2 {
     font-size: 2rem;
     margin-bottom: 20px;
@@ -127,7 +123,7 @@ h1, h2, h3 {
     text-align: right;
 }
 
-/* 剪纸类型部分 */
+/* Paper cutting part */
 .types-section {
     margin-top: 40px;
 }
@@ -187,10 +183,9 @@ h1, h2, h3 {
     top: 0;
 }
 
-/* 第三和第四个卡片的右侧图片 */
 .type-card:nth-child(5) .type-image.right,
 .type-card:nth-child(4) .type-image.right {
-    right: -30px; /* 向左移动一些 */
+    right: -30px; /* move left */
 }
 
 .type-image.right.centered {
@@ -198,7 +193,7 @@ h1, h2, h3 {
     left: 0;
     width:100%;
     margin: auto;
-    transform: none; /* 取消水平翻转 */
+    transform: none; 
 }
 
 .image-label {
@@ -218,18 +213,17 @@ h1, h2, h3 {
 }
 
 .type-content h3 {
-    font-size: 2rem; /* 增大标题字体 */
+    font-size: 2rem;
     margin-bottom: 10px;
 }
 
 .type-description {
     font-family: 'JetBrains Mono', monospace;
     color: #666;
-    font-size: 1.2rem; /* 增大描述文字字体 */
+    font-size: 1.2rem;
     line-height: 1.6;
 }
 
-/* 响应式设计 */
 @media (max-width: 576px) {
     .types-section h2 {
         font-size: 1.3rem;
@@ -425,7 +419,7 @@ h1, h2, h3 {
     }
 }
 
-/* 作者介绍部分 */
+/* Author introduction */
 .author-section {
     margin-top: 40px;
     margin-bottom: 40px;
@@ -496,7 +490,6 @@ h1, h2, h3 {
     }
 }
 
-/* 轮播图样式 */
 .slideshow-container {
     max-width: 100%;
     position: relative;
@@ -540,7 +533,6 @@ h1, h2, h3 {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* 导航按钮 */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -573,7 +565,6 @@ h1, h2, h3 {
     background-color: rgba(139, 0, 0, 0.7);
 }
 
-/* 导航点 */
 .dots-container {
     text-align: center;
     position: absolute;
@@ -593,7 +584,6 @@ h1, h2, h3 {
 }
 
 
-/* 动画效果 */
 .fade {
     animation-name: fade;
     animation-duration: 1s;
@@ -604,7 +594,6 @@ h1, h2, h3 {
     to {opacity: 1}
 }
 
-/* 响应式调整 */
 @media (max-width: 768px) {
     .slide-overlay {
         bottom: 15px;
