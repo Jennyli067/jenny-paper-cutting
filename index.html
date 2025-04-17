@@ -68,11 +68,11 @@
             gap: 15px;
             padding: 5px 0;
             scrollbar-width: none; 
-            -ms-overflow-style: none; 
+            -ms-overflow-style: none;
         }
         
         .footer-nav::-webkit-scrollbar {
-            display: none; 
+            display: none; /* Chrome, Safari, Opera */
         }
         
         .footer-nav a {
@@ -216,14 +216,12 @@
                         </div>
                     </div>
                     
-            
                     <div class="dots-container">
                         <span class="dot" onclick="currentSlide(1)"></span>
                         <span class="dot" onclick="currentSlide(2)"></span>
                         <span class="dot" onclick="currentSlide(3)"></span>
                     </div>
                     
-            
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
