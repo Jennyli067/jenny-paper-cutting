@@ -5,7 +5,7 @@
 }
 body {
     font-family: 'JetBrains Mono', monospace;
-    background: url('../images/bd-bg.png');
+    background: url('images/bd-bg.png');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -474,7 +474,7 @@ body {
         left: 0;
         width: 200px;
         height: 200px;
-        background: url('../images/decoration1.png') no-repeat;
+        background: url('images/decoration1.png') no-repeat;
         background-size: contain;
         opacity: 0.1;
         z-index: -1;
@@ -487,7 +487,7 @@ body {
         right: 0;
         width: 200px;
         height: 200px;
-        background: url('../images/decoration2.png') no-repeat;
+        background: url('images/decoration2.png') no-repeat;
         background-size: contain;
         opacity: 0.1;
         z-index: -1;
