@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animals - Paper Cuttings Art</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <!-- Introduce fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaini+Purva&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* PC style refactoring - two animals in one row */
+        @media (min-width: 1200px) {
+            .detail-title {
+                font-size: 28px !important;
+                max-width: 350px !important;
+                margin: 0 auto 40px !important;
+                padding: 8px 35px !important;
+                text-align: center !important;
+                display: block !important;
+            }
+
+            .timeline-container {
+                padding: 40px !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 30px !important;
+                background-color: #fff3eb !important;
+                border-radius: 20px !important;
+                margin: 20px auto !important;
+                max-width: 1000px !important;
+                grid-template-columns: none !important;
+            }
+
+            .timeline-item {
+                background-color: white !important;
+                border-radius: 15px !important;
+                padding: 25px !important;
+                margin-bottom: 0 !important;
+                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+                width: calc(50% - 15px) !important;
+                flex: 0 0 calc(50% - 15px) !important;
+                box-sizing: border-box !important;
+                position: relative !important;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+            }
+
+            .timeline-item.title-only {
+                width: 100% !important;
+                flex: 0 0 100% !important;
+                background-color: transparent !important;
+                box-shadow: none !important;
+                padding: 10px 20px !important;
+                margin: 10px 0 !important;
+                text-align: center !important;
+            }
+
+            .timeline-item:not(.title-only)::before {
+                display: none !important;
+            }
+
+            .timeline-dot {
+                display: none !important;
+            }
+
+            .timeline-line {
+                display: none !important;
+            }
+
+            .timeline-content {
+                padding: 0 !important;
+            }
+
+            .paper-cut-image {
+                height: 200px !important;
+                margin-bottom: 15px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background-color: white !important;
+            }
+
+            .paper-cut-image img {
+                max-width: 90% !important;
+                max-height: 180px !important;
+                object-fit: contain !important;
+            }
+
+            .paper-cut-description {
+                text-align: center !important;
+                font-size: 16px !important;
+                line-height: 1.7 !important;
+                color: #444 !important;
+                padding: 0 10px !important;
+                margin-top: 10px !important;
+            }
+
+            .animal-title {
+                display: block !important;
+                font-size: 26px !important;
+                background-color: white !important;
+                color: #7f1818 !important;
+                padding: 8px 35px !important;
+                border-radius: 50px !important;
+                margin: 0 auto 20px !important;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.05) !important;
+                text-align: center !important;
+                width: fit-content !important;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .timeline-container {
+                max-width: 1200px !important;
+                gap: 40px !important;
+            }
+
+            .timeline-item {
+                width: calc(50% - 20px) !important;
+                flex: 0 0 calc(50% - 20px) !important;
+                padding: 30px !important;
+            }
+
+            .paper-cut-image {
+                height: 230px !important;
+            }
+
+            .paper-cut-image img {
+                max-height: 200px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container detail-container">
+            <!-- Top navigation and search -->
+            <div class="detail-header">
+                <a href="index.html" class="back-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </a>
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="search">
+                </div>
+            </div>
+
+            <!-- Category navigation -->
+            <div class="category-nav">
+                <a href="#" class="category-item active">Animals</a>
+                <a href="#" class="category-item">architecture</a>
+                <a href="#" class="category-item">portrait</a>
+                <a href="#" class="category-item">window grilles</a>
+            </div>
+            
+            <!-- Dragon title -->
+            <h2 class="detail-title">Dragon</h2>
+
+            <div class="timeline-container">
+                <!-- Dragon part -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="animal-title">Dragon</h3>
+                        <div class="paper-cut-image">
+                            <img src="images1/5.png" alt="Dragon Paper Cutting">
+                        </div>
+                        <div class="paper-cut-image">
+                            <img src="images1/6.png" alt="Dragon Paper Cutting">
+                        </div>
+                        <p class="paper-cut-description">
+                            Loong's paper-cut has rich moral and symbolic significance. Dragon is a symbol of the Chinese nation, representing authority, dignity and happiness.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Rabbit part - put it in the first row with Dragon -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="animal-title">Rabbit</h3>
+                        <div class="paper-cut-image">
+                            <img src="images1/7.png" alt="Rabbit Paper Cutting">
+                        </div>
+                        <div class="paper-cut-image">
+                            <img src="images1/8.png" alt="Rabbit Paper Cutting">
+                        </div>
+                        <p class="paper-cut-description">
+                            Rabbit paper-cut:In China, the rabbit itself has a beautiful implication of extreme accumulation and kindness.So people usually think that the rabbit represents transcendence and progress.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Mouse part - put it on the second line -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="animal-title">Mouse</h3>
+                        <div class="paper-cut-image">
+                            <img src="images1/9.png" alt="Mouse Paper Cutting">
+                        </div>
+                        <div class="paper-cut-image">
+                            <img src="images1/10.png" alt="Mouse Paper Cutting">
+                        </div>
+                        <p class="paper-cut-description">
+                            It is regarded as a symbol of alertness, good handling of adversity, reproduction 
+                            of descendants and prosperity of family business. 
+                            It has the auspicious meaning of endless growth and prosperity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
