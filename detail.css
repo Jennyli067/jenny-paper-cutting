@@ -502,8 +502,3 @@ input:focus {
   border-radius: 4px;
   transition: outline 0.2s ease, background-color 0.2s ease;
 }
-/* Improved icon contrast for accessibility */
-.back-button svg,
-.search-bar svg {
-  stroke: #444;
-}
