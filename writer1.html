@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chen Shenglan - 剪纸艺术家</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary-color: #c71a1a;
+            --secondary-color: #ffefef;
+            --text-color: #333;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(to bottom, #fec1be 0%, #fde8e5 100%);
+            background-image: url('images/bd-bg.png');
+            background-blend-mode: overlay;
+            background-attachment: fixed;
+            background-size: 200px;
+            background-position: center;
+            min-height: 100vh;
+        }
+        
+        /* Header style */
+        .writer-header {
+            background-image: url('images/bg1.png');
+            background-blend-mode: multiply;
+            background-size: cover;
+            background-position: center;
+            height: 330px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            filter: brightness(1.2);
+        }
+        
+        .writer-name {
+            font-family: 'Jaini Purva', cursive;
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+        
+        .writer-year {
+            font-size: 1.5rem;
+        }
+        
+        /* Content area style */
+        .writer-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Writer Information Card */
+        .writer-profile {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .profile-image-container {
+            flex: 0 0 42%;
+            margin-right: 15px;
+        }
+        
+        .profile-image {
+            width: 100%;
+            border-radius: 15px;
+        }
+        
+        .profile-content {
+            flex: 1;
+            padding: 0;
+            box-shadow: none;
+            background: none;
+        }
+        
+        /* Title style */
+        .writer-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .writer-title {
+            color: var(--primary-color);
+            font-family: 'Jaini Purva', cursive;
+            font-size: 1.6rem;
+            margin: 0 10px;
+        }
+        
+        .title-icon {
+            width: 26px;
+            height: 26px;
+            opacity: 0.9;
+        }
+        
+        /* Decorative icon style */
+        .decoration-icon {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin: 0 10px;
+            opacity: 0.9;
+        }
+        
+        /* Message title */
+        .info-title {
+            color: var(--primary-color);
+            text-align: center;
+            font-family: 'Jaini Purva', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Basic information style */
+        .basic-info {
+            background: linear-gradient(180deg, #FFF3EB 0%, #FFE5D3 100%);
+            border-radius: 22px;
+            padding: 15px 20px;
+            margin-top: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            font-family: monospace;
+        }
+        
+        .basic-info h3 {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 8px;
+            text-align: center;
+            color: #000;
+            font-weight: normal;
+            padding-bottom: 0;
+            border-bottom: none;
+            position: relative;
+        }
+        
+        .basic-info h3::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            right: -20px;
+            bottom: -5px;
+            height: 1px;
+            background: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.9) 0px, rgba(255, 255, 255, 0.9) 8px, transparent 8px, transparent 16px);
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-item {
+            padding: 2px 0;
+            border-bottom: none;
+            font-size: 0.95rem;
+            line-height: 1.3;
+            color: #000;
+            font-family: monospace;
+        }
+        
+        .info-section {
+            padding: 5px 0;
+        }
+        
+        .info-section:first-of-type {
+            padding-top: 8px;
+        }
+        
+        .info-section:last-of-type {
+            padding-bottom: 0;
+        }
+        
+        .info-section:first-of-type {
+            position: relative;
+        }
+        
+        .info-section:first-of-type::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            right: -20px;
+            bottom: -3px;
+            height: 1px;
+            background: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.9) 0px, rgba(255, 255, 255, 0.9) 8px, transparent 8px, transparent 16px);
+        }
+        
+        .info-section:nth-of-type(2)::after {
+            display: none;
+        }
+        
+        /* Profile style */
+        .personal-profile {
+            margin-top: 25px;
+            padding: 0 5px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+        
+        .profile-title {
+            color: var(--primary-color);
+            font-family: 'Jaini Purva', cursive;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #c71a1a;
+            opacity: 0.2;
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+        
+        .profile-content-text {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: #333;
+            text-align: justify;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0 2px;
+        }
+        
+        /* Paper-cutting style */
+        .papercut-work {
+            margin-top: 30px;
+            padding: 0 5px;
+        }
+        
+        .work-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .work-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+        
+        .work-title {
+            color: var(--primary-color);
+            font-family: 'Jaini Purva', cursive;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        
+        .work-divider {
+            height: 1px;
+            background-color: #c71a1a;
+            opacity: 0.2;
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+        
+        .papercut-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .papercut-item {
+            background-color: #fff6e9;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .papercut-image {
+            width: 100%;
+            border-radius: 5px;
+        }
+        
+        .papercut-item:nth-child(odd) {
+            background-color: #fff3e8;
+        }
+        
+        .papercut-item:nth-child(even) {
+            background-color: #ffebeb;
+        }
+        
+        @media (max-width: 768px) {
+            .writer-header {
+                height: 300px;
+            }
+            
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .writer-name {
+                font-size: 2rem;
+            }
+            
+            .writer-year {
+                font-size: 1.2rem;
+            }
+            
+            .info-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                left: 15px;
+                font-size: 1.8rem;
+            }
+            
+            .profile-image-container {
+                flex: 0 0 45%;
+                margin-right: 15px;
+            }
+            
+            .decoration-icon {
+                width: 25px;
+                height: 25px;
+                margin: 0 5px;
+            }
+            
+            .profile-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .writer-header {
+                height: 280px;
+            }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .writer-name {
+                font-size: 1.7rem;
+            }
+            
+            .writer-year {
+                font-size: 1rem;
+            }
+            
+            .info-title {
+                font-size: 1.2rem;
+                margin-bottom: 8px;
+            }
+            
+            .basic-info {
+                padding: 10px;
+                border-radius: 18px;
+            }
+            
+            .basic-info h3 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            .basic-info h3::after {
+                left: -10px;
+                right: -10px;
+                bottom: -4px;
+            }
+            
+            .info-item {
+                font-size: 0.8rem;
+                padding: 1px 0;
+                line-height: 1.2;
+            }
+            
+            .info-section {
+                padding: 3px 0;
+            }
+            
+            .info-section:first-of-type {
+                padding-top: 5px;
+            }
+            
+            .info-section:first-of-type::after {
+                left: -10px;
+                right: -10px;
+                bottom: -2px;
+            }
+            
+            .profile-icon {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .profile-title {
+                font-size: 1rem;
+            }
+            
+            .profile-content-text {
+                font-size: 0.78rem;
+                line-height: 1.4;
+            }
+            
+            .writer-title {
+                font-size: 1.4rem;
+            }
+            
+            .title-icon {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .work-icon {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .work-title {
+                font-size: 1rem;
+            }
+            
+            .papercut-gallery {
+                gap: 10px;
+            }
+            
+            .papercut-item {
+                padding: 10px;
+                border-radius: 15px;
+            }
+        }
+        
+        /* PC-specific style */
+        @media (min-width: 992px) {
+            .writer-content {
+                padding: 30px;
+            }
+            
+            .writer-profile {
+                margin-top: 30px;
+                margin-bottom: 40px;
+                gap: 30px;
+            }
+            
+            .profile-image-container {
+                flex: 0 0 35%;
+                margin-right: 0;
+            }
+            
+            .profile-image {
+                border-radius: 20px;
+            }
+            
+            .writer-title-container {
+                margin-bottom: 15px;
+            }
+            
+            .writer-title {
+                font-size: 2rem;
+            }
+            
+            .title-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .basic-info {
+                padding: 20px 25px;
+                border-radius: 25px;
+            }
+            
+            .basic-info h3 {
+                font-size: 1.6rem;
+                margin-bottom: 15px;
+            }
+            
+            .info-item {
+                font-size: 1.2rem;
+                padding: 4px 0;
+                line-height: 1.5;
+            }
+            
+            .info-section {
+                padding: 8px 0;
+            }
+            
+            .personal-profile {
+                margin-top: 35px;
+                padding: 0 10px;
+            }
+            
+            .profile-header {
+                margin-bottom: 20px;
+            }
+            
+            .profile-icon, .work-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .profile-title, .work-title {
+                font-size: 1.8rem;
+            }
+            
+            .profile-content-text {
+                font-size: 1.15rem;
+                line-height: 1.7;
+                max-width: 95%;
+                margin: 0 auto;
+                font-family: 'JetBrains Mono', monospace;
+            }
+            
+            .papercut-work {
+                margin-top: 40px;
+                padding: 0 10px;
+            }
+            
+            .work-header {
+                margin-bottom: 25px;
+            }
+            
+            .papercut-gallery {
+                gap: 25px;
+            }
+            
+            .papercut-item {
+                padding: 20px;
+                border-radius: 25px;
+                transition: transform 0.3s ease;
+            }
+            
+            .papercut-item:hover {
+                transform: translateY(-5px);
+            }
+        }
+        
+        /* Large screen layout */
+        @media (min-width: 1200px) {
+            .writer-header {
+                height: 380px;
+            }
+            
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .writer-name {
+                font-size: 3.2rem;
+            }
+            
+            .writer-year {
+                font-size: 2rem;
+            }
+            
+            .writer-content {
+                padding: 40px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            
+            .writer-profile {
+                grid-column: 1 / 3;
+                margin-bottom: 30px;
+            }
+            
+            .writer-title {
+                font-size: 2.2rem;
+            }
+            
+            .title-icon {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .basic-info h3 {
+                font-size: 1.8rem;
+            }
+            
+            .info-item {
+                font-size: 1.3rem;
+                padding: 5px 0;
+            }
+            
+            .personal-profile {
+                grid-column: 1 / 2;
+                margin-top: 0;
+            }
+            
+            .papercut-work {
+                grid-column: 2 / 3;
+                margin-top: 0;
+            }
+            
+            .profile-title, .work-title {
+                font-size: 2rem;
+            }
+            
+            .profile-content-text {
+                font-size: 1.25rem;
+                line-height: 1.8;
+                font-family: 'JetBrains Mono', monospace;
+            }
+            
+            .papercut-gallery {
+                gap: 20px;
+            }
+        }
+    </style>
+    <!-- Introduce fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaini+Purva&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- head area -->
+    <div class="writer-header">
+        <a href="writer_introduction.html" class="back-button">
+            &#8249;
+        </a>
+        <img src="images/2.png" alt="Logo" class="logo">
+        <h1 class="writer-name">Ku Shulan</h1>
+        <div class="writer-year">1924-2004</div>
+    </div>
+    
+    <!-- content area -->
+    <div class="writer-content">
+        <div class="writer-profile">
+            <!-- writer photo -->
+            <div class="profile-image-container">
+                <img src="images/14.png" alt="Chen Shenglan" class="profile-image">
+            </div>
+            
+            <!-- Writer information -->
+            <div class="profile-content">
+                <div class="writer-title-container">
+                    <img src="images/3.png" alt="装饰" class="title-icon">
+                    <h2 class="writer-title">Ku Shulan</h2>
+                    <img src="images/3.png" alt="装饰" class="title-icon">
+                </div>
+                <div class="basic-info">
+                    <h3>Basic Information</h3>
+                    <div class="info-section">
+                        <ul class="info-list">
+                            <li class="info-item">Year of birth: 1924-2004</li>
+                            <li class="info-item">Nationality: Han</li>
+                            <li class="info-item">Sex: Female</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <ul class="info-list">
+                            <li class="info-item">Native place: Fucun Village, Equator Township, Xunyi County, Xianyang, Shaanxi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Profile section -->
+        <div class="personal-profile">
+            <div class="profile-header">
+                <img src="images/3.png" alt="Icon" class="profile-icon">
+                <h3 class="profile-title">Personal Profile</h3>
+                <div class="divider"></div>
+            </div>
+            <div class="profile-content-text">
+                Ku Shulan, female, born in 1924, born in 2004 in Fucun Vill- age,Equator Township, Xunyi County, Xianyang, Shaanxi Provi- nce, isone of the outstanding representatives of Chinese fo- lk paper-cut art, a master of Chinese folk arts and crafts, and is known as the "Lady of Cutting Flowers". Ku Shulan was born in a poor peasant family. At the age of six, he began to learn paper-cutting and painting with his mother. Its pa- per-cut style is bold in composition, full in characters and bright in color, which soon attracted the attention of the art world. Her art paper-cut has also been in Xi'an Artists Gallery,The National Art Museum of China and the Exhibition Hall of the Central Academy of Fine Arts. In 1996, she was awarded the title of "Outstanding Master of Folk Art" by U- NESCO, the first Chinese to receive this title. Color repr- esented by Ku Shulan Paper-cut has been listed in the natio- nal intangible cultural heritage protection list. Paper-cut style introduction:Ku Shulan paper-cut has innovated on the basis of inheriting the tradition-al folk paper-cut art. She does not rigidly adhere to the traditional paper-cutting te- chniques and uses a variety of bright colors.The unique com- position and layout create a new paper-cut art. And make full use of the characteristics of image narrative. The inherent information content and emotional characteristics make it mo- re narrative through the ingenious design of color, shape and composition. Paper-cut works continue to stretch from small p- ictures, intuitively telling every little story, viewers can feel the life of Guanzhong, into Ku Shulan. Inside. In the hands of Ku Shulan, paper isno longer ordinary, it connects local life and ancient culture, and express-es Ku Shulan's deep feelings and inner beliefs.
+            </div>
+        </div>
+        
+        <!-- Paper-cutting works -->
+        <div class="papercut-work">
+            <div class="work-header">
+                <img src="images/3.png" alt="Icon" class="work-icon">
+                <h3 class="work-title">Paper-cut work</h3>
+                <div class="work-divider"></div>
+            </div>
+            <div class="papercut-gallery">
+                <div class="papercut-item">
+                    <img src="images/9.png" alt="Paper-cut work" class="papercut-image">
+                </div>
+                <div class="papercut-item">
+                    <img src="images/10.png" alt="Paper-cut work" class="papercut-image">
+                </div>
+                <div class="papercut-item">
+                    <img src="images/11.png" alt="Paper-cut work" class="papercut-image">
+                </div>
+                <div class="papercut-item">
+                    <img src="images/12.png" alt="Paper-cut work" class="papercut-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
