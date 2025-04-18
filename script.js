@@ -1,4 +1,4 @@
-// define the content data for each category
+// Define the content data for each category
 const categoryContent = {
     'animals': {
         title: 'Dragon',
@@ -82,22 +82,28 @@ const categoryContent = {
     }
 };
 
+// Carousel Logic
 let slideIndex = 1;
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if it is on the detail.html page
     const isDetailPage = document.querySelector('.detail-container') !== null;
     
     if (isDetailPage) {
+        // Get the category parameter from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const category = urlParams.get('category');
         
         if (category) {
+            // Get all navigation items
             const categoryItems = document.querySelectorAll('.category-nav .category-item');
             
             // Find the corresponding navigation item and activate it
             categoryItems.forEach(item => {
                 if (item.textContent.toLowerCase().replace(' ', '-') === category) {
+                    // Remove all active classes
                     categoryItems.forEach(i => i.classList.remove('active'));
+                    // Add the active class of the current item
                     item.classList.add('active');
                     
                     // Update page title
@@ -106,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         detailTitle.textContent = categoryContent[category].title;
                     }
                     
+                    // Update content
                     updateTimelineContent(category);
                 }
             });
@@ -120,11 +127,12 @@ document.addEventListener('DOMContentLoaded', function() {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                
+                // Remove all active classes
                 categoryItems.forEach(i => i.classList.remove('active'));
-               
+                // Add the active class of the current item
                 this.classList.add('active');
                 
+                // Get the current category
                 const category = this.textContent.toLowerCase().replace(' ', '-');
                 
                 // Update URL parameters without refreshing the page
@@ -138,10 +146,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     detailTitle.textContent = categoryContent[category].title;
                 }
                 
+                // Update content
                 updateTimelineContent(category);
             });
         });
     } else {
+        // Home page logic
+        // Initialize the carousel
         showSlides(slideIndex);
         
         // Autoplay
@@ -204,7 +215,9 @@ document.addEventListener('DOMContentLoaded', function() {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
                 
+                // Remove all activations
                 navItems.forEach(i => i.classList.remove('active'));
+                // Add the activation state of the current item
                 this.classList.add('active');
                 
                 // Smooth scrolling to target position
@@ -336,10 +349,12 @@ function updateTimelineContent(category) {
     }
 }
 
+// front and rear control
 function plusSlides(n) {
     showSlides(slideIndex += n);
 }
 
+// Current control
 function currentSlide(n) {
     showSlides(slideIndex = n);
 }
@@ -349,7 +364,7 @@ function showSlides(n) {
     const slides = document.getElementsByClassName("mySlides");
     const dots = document.getElementsByClassName("dot");
     
-    if (!slides.length) return; 
+    if (!slides.length) return; // If the page does not have a slideshow element, return directly
     
     // Handling index out of bounds
     if (n > slides.length) {slideIndex = 1}
