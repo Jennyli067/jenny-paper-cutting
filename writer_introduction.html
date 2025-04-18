@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper-cut Writer Introduction</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: url('images/bd-bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+        .writer-header {
+            background-image: url('images/bg.png');
+            background-blend-mode: multiply;
+            background-size: cover;
+            background-position: center;
+            border-radius: 0 0 30px 30px;
+            padding: 0;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            box-sizing: border-box;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .writer-title {
+            color: white;
+            font-size: 2.5rem;
+            font-family: 'Jaini Purva', cursive;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .writer-title .logo {
+            width: 70px;
+            height: 70px;
+            filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.6));
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+        
+        .writer-container {
+            max-width: 100%;
+            padding: 0;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+        
+        /* Writer Timeline Style */
+        .writer-timeline {
+            position: relative;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #c71a1a;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+            align-items: center;
+        }
+        
+        /* Add a horizontal line to connect the timeline and cards */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            width: 40px;
+            height: 2px;
+            background-color: #c71a1a;
+            transform: translateY(-50%);
+        }
+        
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #c71a1a;
+            margin-right: 40px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            align-self: center;
+        }
+        
+        .timeline-dot.active {
+            background-color: #3a9bdc;
+        }
+        
+        /* Adjust the card style and add gradient effects */
+        .writer-card {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            border-radius: 104px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* First Writer Special Style */
+        .timeline-item:nth-of-type(2) .writer-card {
+            background: linear-gradient(180deg, #FFB0B0 0%, #FFEAD7 100%);
+        }
+        
+        /* Second Writer Special Style */
+        .timeline-item:nth-of-type(3) .writer-card {
+            background: linear-gradient(180deg, rgba(255, 206, 186, 0.81) 0%, rgba(255, 234, 226, 0.81) 100%);
+        }
+        
+        /* Third Writer Special Style */
+        .timeline-item:nth-of-type(4) .writer-card {
+            background: linear-gradient(180deg, #FF9393 0%, #FFCCB6 100%);
+        }
+        
+        /* Fourth Writer Special Style */
+        .timeline-item:nth-of-type(5) .writer-card {
+            background: linear-gradient(180deg, #FFCEBA 0%, #FFEBE1 100%);
+        }
+        
+        /* Fifth Writer Special Style */
+        .timeline-item:nth-of-type(6) .writer-card {
+            background: linear-gradient(180deg, #F8CBA8 0%, #FF9393 100%);
+        }
+    
+                .timeline-item:nth-of-type(7) .writer-card {
+                    background: linear-gradient(180deg, #FFB0B0 0%, #FFEAD7 100%);
+
+        }
+        .writer-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #ffb3b3;
+            flex-shrink: 0;
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        /* Set different avatar border colors for different writers */
+        .timeline-item:nth-child(2n+1) .writer-image {
+            border-color: #ffb3b3;
+        }
+        
+        .timeline-item:nth-child(2n+2) .writer-image {
+            border-color: #ffcaa3;
+        }
+        
+        .timeline-item:nth-child(2n+3) .writer-image {
+            border-color: #e3c7ff;
+        }
+        
+        .timeline-item:nth-child(4) .writer-image {
+            border-color: #a3d4ff;
+        }
+        
+        .writer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Add an outer decorative ring to the avatar */
+        .writer-image::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 150, 150, 0.5);
+            z-index: -1;
+        }
+        
+        .writer-info {
+            flex: 1;
+        }
+        
+        .writer-name {
+            font-family: 'Jaini Purva', cursive;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .writer-description {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .timeline-decoration {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            left: 50px;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .decoration-top {
+            top: -10px;
+        }
+        
+        .decoration-bottom {
+            bottom: -10px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 576px) {
+            .writer-title {
+                font-size: 1.8rem;
+                gap: 10px;
+            }
+            
+            .writer-title .logo {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .writer-header {
+                height: 250px;
+            }
+            
+            .back-button {
+                left: 15px;
+                font-size: 1.5rem;
+            }
+            
+            .writer-card {
+                padding: 12px;
+                border-radius: 50px;
+            }
+            
+            .writer-image {
+                width: 60px;
+                height: 60px;
+                margin-right: 12px;
+            }
+            
+            .writer-name {
+                font-size: 1.1rem;
+                margin-bottom: 2px;
+            }
+            
+            .writer-description {
+                font-size: 0.75rem;
+                line-height: 1.3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 29px;
+                top: 30px;
+                bottom: 29px;
+            }
+            
+            .timeline-dot {
+                margin-right: 20px;
+                width: 20px;
+                height: 20px;
+            }
+            
+            .timeline-item::before {
+                left: 20px;
+                width: 20px;
+            }
+            
+            .writer-card {
+                padding: 15px;
+            }
+            
+            .writer-image {
+                width: 80px;
+                height: 80px;
+                margin-right: 15px;
+            }
+            
+            .writer-name {
+                font-size: 1.3rem;
+            }
+            
+            .writer-description {
+                font-size: 0.8rem;
+            }
+            
+            .timeline-decoration {
+                width: 40px;
+                height: 40px;
+                left: 30px;
+            }
+            
+            .writer-timeline {
+                padding: 20px;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .writer-card {
+                padding: 18px;
+            }
+            
+            .writer-image {
+                width: 90px;
+                height: 90px;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .writer-timeline {
+                padding: 60px 40px;
+            }
+            
+            .timeline-line {
+                top: 48px;
+                left: 79px;
+                bottom: 49px;
+            }
+            
+            .timeline-item::before {
+                left: 42px;
+                width: 72px;
+            }
+            
+            .timeline-dot {
+                margin-right: 60px;
+                margin-left: 29px;
+            }
+            
+            .timeline-decoration {
+                left: 80px;
+            }
+        }
+    </style>
+    <!-- Introduce fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaini+Purva&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container writer-container">
+        <!-- top title bar -->
+        <div class="writer-header">
+            <a href="index.html" class="back-button">
+                &#8249;
+            </a>
+            <h1 class="writer-title">
+       <img src="images/2.png" class="logo" alt="">
+                Paper-cut writer
+             <img class="logo" src="images/2.png" alt="">
+            </h1>
+        </div>
+        
+        <!-- Here we will place the introduction of paper-cutting writers -->
+        <div class="writer-timeline">
+            <div class="timeline-line"></div>
+            
+            <img src="images/3.png" alt="装饰" class="timeline-decoration decoration-top">
+            
+            <!-- writer 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <a href="writer1.html" style="text-decoration: none; flex: 1;">
+                    <div class="writer-card">
+                        <div class="writer-image">
+                            <img src="images/19.png" alt="Ku Shulan">
+                        </div>
+                        <div class="writer-info">
+                            <h3 class="writer-name">Ku Shulan</h3>
+                            <p class="writer-description">
+                                Was awarded the title of Outstanding Folk Art Master by UNESCO.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- writer 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <a href="writer.html" style="text-decoration: none; flex: 1;">
+                    <div class="writer-card">
+                        <div class="writer-image">
+                            <img src="images/20.png" alt="Chen Shenglan">
+                        </div>
+                        <div class="writer-info">
+                            <h3 class="writer-name">Chen Shenglan</h3>
+                            <p class="writer-description">
+                                Is a famous talented person in Gaoqiao Township.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- writer 3 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="writer-card">
+                    <div class="writer-image">
+                        <img src="images/15.png" alt="Wang Xian">
+                    </div>
+                    <div class="writer-info">
+                        <h3 class="writer-name">Wang Xian</h3>
+                        <p class="writer-description">
+                            Performed the blindfolded cut of "Four Sheep in Spring".
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- writer 4 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="writer-card">
+                    <div class="writer-image">
+                        <img src="images/16.png" alt="Hao Guizhen">
+                    </div>
+                    <div class="writer-info">
+                        <h3 class="writer-name">Hao Guizhen</h3>
+                        <p class="writer-description">
+                            Likes to cut window papercuts and embroider flowers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- writer 5 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="writer-card">
+                    <div class="writer-image">
+                        <img src="images/17.png" alt="Hou Xuezhao">
+                    </div>
+                    <div class="writer-info">
+                        <h3 class="writer-name">Hou Xuezhao</h3>
+                        <p class="writer-description">
+                            Was rated as a third-class master of Arts and crafts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- writer 6 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="writer-card">
+                    <div class="writer-image">
+                        <img src="images/18.png" alt="Li Fuai">
+                    </div>
+                    <div class="writer-info">
+                        <h3 class="writer-name">Li Fuai</h3>
+                        <p class="writer-description">
+                            His works are on display at the National Art Museum of China.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <img src="images/3.png" alt="装饰" class="timeline-decoration decoration-bottom">
+        </div>
+        
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
