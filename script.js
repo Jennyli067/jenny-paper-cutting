@@ -6,7 +6,7 @@ const categoryContent = {
             {
                 title: 'Dragon',
                 images: ['images1/5.png', 'images1/6.png'],
-                description: "Loong's paper-cut has rich moral and symbolic significance. Dragon is a symbol of the Chinese nation, representing authority, dignity and happiness."
+                description: "Long's paper-cut has rich moral and symbolic significance. Dragon is a symbol of the Chinese nation, representing authority, dignity and happiness."
             },
             {
                 title: 'Rabbit',
@@ -100,22 +100,19 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Find the corresponding navigation item and activate it
             categoryItems.forEach(item => {
-                if (item.textContent.toLowerCase().replace(' ', '-') === category) {
-                    // Remove all active classes
-                    categoryItems.forEach(i => i.classList.remove('active'));
-                    // Add the active class of the current item
-                    item.classList.add('active');
-                    
-                    // Update page title
-                    const detailTitle = document.querySelector('.detail-title');
-                    if (detailTitle && categoryContent[category]) {
-                        detailTitle.textContent = categoryContent[category].title;
-                    }
-                    
-                    // Update content
-                    updateTimelineContent(category);
-                }
-            });
+    if (item.getAttribute('data-category') === category) {
+        categoryItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        const detailTitle = document.querySelector('.detail-title');
+        if (detailTitle && categoryContent[category]) {
+            detailTitle.textContent = categoryContent[category].title;
+        }
+
+        updateTimelineContent(category);
+    }
+});
+
         }
         
         // Get all navigation items
@@ -133,7 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.classList.add('active');
                 
                 // Get the current category
-                const category = this.textContent.toLowerCase().replace(' ', '-');
+                const category = this.getAttribute('data-category');
+
                 
                 // Update URL parameters without refreshing the page
                 const url = new URL(window.location.href);
