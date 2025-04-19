@@ -1,4 +1,4 @@
-/* 详情页面样式 */
+/* Details page style */
 .detail-container {
     max-width: 100%;
     padding: 20px;
@@ -12,7 +12,7 @@ body {
     background-repeat: no-repeat;
     line-height: 1.6;
 }
-/* 顶部导航和搜索 */
+/* Top navigation and search */
 .detail-header {
     display: flex;
     align-items: center;
@@ -37,10 +37,10 @@ body {
     flex: 1;
     display: flex;
     align-items: center;
-    background-color: #f8f8f8; /* 微调颜色 */
+    background-color: #f8f8f8; 
     border-radius: 50px;
     padding: 12px 20px;
-    border: 1px solid #e9b872; /* 金色边框 */
+    border: 1px solid #e9b872; 
     box-shadow: 0 1px 3px rgba(233, 184, 114, 0.2);
 }
 
@@ -63,7 +63,7 @@ body {
     color: #aaa;
 }
 
-/* 分类导航 */
+/* Category navigation */
 .category-nav {
     display: flex;
     overflow-x: auto;
@@ -80,7 +80,7 @@ body {
 .category-item {
     white-space: nowrap;
     padding: 5px 0;
-    margin-right: 35px; /* 增加间距更符合图片 */
+    margin-right: 35px; /* Increase the spacing to better fit the picture */
     text-decoration: none;
     color: #555;
     font-family: 'Jaini Purva', cursive;
@@ -105,11 +105,11 @@ body {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: #c49a6c; /* 金棕色下划线 */
+    background-color: #c49a6c; /* Golden brown underline */
     border-radius: 1.5px;
 }
 
-/* 内容标题 */
+/* Content title */
 .detail-title {
     font-family: 'JetBrains Mono', monospace;
     font-size: 20px;
@@ -118,13 +118,13 @@ body {
     font-weight: normal;
     background-color: #fff;
     padding: 4px 25px;
-    border-radius: 50px; /* 完全圆角 */
+    border-radius: 50px; 
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     text-align: left;
-    width: 100%; /* 确保占满宽度 */
+    width: 100%; /* Make sure to occupy the full width */
 }
 
-/* 时间轴 */
+/* timeline */
 .timeline-container {
     background-color: #fff3eb;
     border-radius: 12px;
@@ -196,7 +196,7 @@ body {
     padding-bottom: 10px;
 }
 
-/* 剪纸图片 */
+/* paper cutting pictures */
 .paper-cut-image {
     background-color: #fff;
     border-radius: 15px;
@@ -218,7 +218,7 @@ body {
     object-fit: contain;
 }
 
-/* 描述文本 */
+/* description text */
 .paper-cut-description {
     font-family: 'JetBrains Mono', monospace;
     font-size: 15px;
@@ -242,7 +242,7 @@ body {
     display: inline-block;
 }
 
-/* 响应式设计 */
+/* Responsive design */
 @media (min-width: 768px) {
     .detail-container {
         max-width: 720px;
@@ -296,7 +296,7 @@ body {
     }
 }
 
-/* PC端响应式样式 */
+/* PC-side responsive style */
 @media (min-width: 1200px) {
     .detail-container {
         max-width: 1140px;
@@ -465,7 +465,7 @@ body {
     }
 }
 
-/* 添加页面背景装饰 */
+/* Add page background decoration */
 @media (min-width: 1200px) {
     .detail-container::before {
         content: '';
