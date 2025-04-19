@@ -21,7 +21,7 @@ body {
 }
 
 .back-button {
-    color: #888;
+    color: #444;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +30,7 @@ body {
 }
 
 .back-button svg {
-    stroke: #888;
+    stroke: #444;
 }
 
 .search-bar {
@@ -45,7 +45,7 @@ body {
 }
 
 .search-bar svg {
-    color: #aaa;
+    color: #666;
     margin-right: 12px;
 }
 
@@ -82,7 +82,7 @@ body {
     padding: 5px 0;
     margin-right: 35px; /* Increase the spacing to better fit the picture */
     text-decoration: none;
-    color: #555;
+    color: #333;
     font-family: 'Jaini Purva', cursive;
     font-size: 20px;
     transition: all 0.3s ease;
