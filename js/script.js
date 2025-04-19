@@ -1,4 +1,4 @@
-// 定义各个分类的内容数据
+// Define the content data for each category
 const categoryContent = {
     'animals': {
         title: 'Dragon',
@@ -82,85 +82,85 @@ const categoryContent = {
     }
 };
 
-// 轮播图逻辑
+// Carousel Logic
 let slideIndex = 1;
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 检查是否在detail.html页面
+    // Check if it is on the detail.html page
     const isDetailPage = document.querySelector('.detail-container') !== null;
     
     if (isDetailPage) {
-        // 从URL获取category参数
+        // Get the category parameter from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const category = urlParams.get('category');
         
         if (category) {
-            // 获取所有导航项
+            // Get all navigation items
             const categoryItems = document.querySelectorAll('.category-nav .category-item');
             
-            // 找到对应的导航项并激活
+            // Find the corresponding navigation item and activate it
             categoryItems.forEach(item => {
                 if (item.textContent.toLowerCase().replace(' ', '-') === category) {
-                    // 移除所有active类
+                    // Remove all active classes
                     categoryItems.forEach(i => i.classList.remove('active'));
-                    // 添加当前项的active类
+                    // Add the active class of the current item
                     item.classList.add('active');
                     
-                    // 更新页面标题
+                    // Update page title
                     const detailTitle = document.querySelector('.detail-title');
                     if (detailTitle && categoryContent[category]) {
                         detailTitle.textContent = categoryContent[category].title;
                     }
                     
-                    // 更新内容
+                    // Update content
                     updateTimelineContent(category);
                 }
             });
         }
         
-        // 获取所有导航项
+        // Get all navigation items
         const categoryItems = document.querySelectorAll('.category-nav .category-item');
         const timelineContainer = document.querySelector('.timeline-container');
 
-        // 为每个导航项添加点击事件
+        // Add a click event for each navigation item
         categoryItems.forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // 移除所有active类
+                // Remove all active classes
                 categoryItems.forEach(i => i.classList.remove('active'));
-                // 添加当前项的active类
+                // Add the active class of the current item
                 this.classList.add('active');
                 
-                // 获取当前分类
+                // Get the current category
                 const category = this.textContent.toLowerCase().replace(' ', '-');
                 
-                // 更新URL参数，但不刷新页面
+                // Update URL parameters without refreshing the page
                 const url = new URL(window.location.href);
                 url.searchParams.set('category', category);
                 window.history.pushState({}, '', url);
                 
-                // 更新页面标题
+                // Update page title
                 const detailTitle = document.querySelector('.detail-title');
                 if (detailTitle) {
                     detailTitle.textContent = categoryContent[category].title;
                 }
                 
-                // 更新内容
+                // Update content
                 updateTimelineContent(category);
             });
         });
     } else {
-        // 首页逻辑
-        // 初始化轮播图
+        // Home page logic
+        // Initialize the carousel
         showSlides(slideIndex);
         
-        // 自动播放
+        // Autoplay
         setInterval(function() {
             plusSlides(1);
         }, 5000);
         
-        // 为type-card添加点击事件
+        // Add click event to type-card
         const typeCards = document.querySelectorAll('.type-card');
         typeCards.forEach(card => {
             const typeLink = card.querySelector('.type-link');
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             
-            // 悬停效果
+            // hover effect
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-5px)';
                 this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.15)';
@@ -187,18 +187,18 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // 导航菜单项添加点击效果
+        // Add click effects to navigation menu items
         const navItems = document.querySelectorAll('.main-nav a');
         
-        // 获取当前页面的hash值
+        // Get the hash value of the current page
         const currentHash = window.location.hash || '#daily-recommendations';
         
-        // 根据hash值设置初始激活状态
+        // Set the initial activation state according to the hash value
         navItems.forEach(item => {
             if (item.getAttribute('href') === currentHash) {
                 item.classList.add('active');
                 
-                // 滚动到对应位置
+                // Scroll to the corresponding position
                 setTimeout(() => {
                     const targetElement = document.querySelector(currentHash);
                     if (targetElement) {
@@ -215,12 +215,12 @@ document.addEventListener('DOMContentLoaded', function() {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // 移除所有激活状态
+                // Remove all activations
                 navItems.forEach(i => i.classList.remove('active'));
-                // 添加当前项的激活状态
+                // Add the activation state of the current item
                 this.classList.add('active');
                 
-                // 平滑滚动到目标位置
+                // Smooth scrolling to target position
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
@@ -230,13 +230,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         behavior: 'smooth'
                     });
                     
-                    // 更新URL hash值，但不触发滚动
+                    // Update the URL hash value without triggering scrolling
                     history.pushState(null, null, targetId);
                 }
             });
         });
         
-        // 推荐卡片悬停效果
+        // Recommended card hover effect
         const recommendationCard = document.querySelector('.recommendation-card');
         
         if (recommendationCard) {
@@ -251,17 +251,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 更新时间轴内容的函数
+// Function to update the timeline content
 function updateTimelineContent(category) {
-    // 在函数内部获取timeline容器
+    // Get the timeline container inside the function
     const timelineContainer = document.querySelector('.timeline-container');
-    if (!timelineContainer) return; // 安全检查
+    if (!timelineContainer) return; // security check
     
     const items = categoryContent[category].items;
     let html = '';
     
     items.forEach((item, index) => {
-        // 把每个项目都作为普通项目，并直接在内容中包含标题
+        // Treat each item as a normal item and include the title directly in the content
         html += `
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -287,7 +287,7 @@ function updateTimelineContent(category) {
     
     timelineContainer.innerHTML = `<div class="timeline-line"></div>${html}`;
     
-    // 针对PC端在加载完内容后添加必要的样式以确保一行两个项目
+    // For PC, add necessary styles after loading the content to ensure two items per row
     if (window.innerWidth >= 1200) {
         const allItems = timelineContainer.querySelectorAll('.timeline-item');
         allItems.forEach(item => {
@@ -341,7 +341,7 @@ function updateTimelineContent(category) {
             }
         });
         
-        // 设置容器样式
+        // Set container style
         timelineContainer.style.display = 'flex';
         timelineContainer.style.flexWrap = 'wrap';
         timelineContainer.style.justifyContent = 'center';
@@ -349,12 +349,12 @@ function updateTimelineContent(category) {
     }
 }
 
-// 前后控制
+// front and rear control
 function plusSlides(n) {
     showSlides(slideIndex += n);
 }
 
-// 当前控制
+// Current control
 function currentSlide(n) {
     showSlides(slideIndex = n);
 }
@@ -364,23 +364,23 @@ function showSlides(n) {
     const slides = document.getElementsByClassName("mySlides");
     const dots = document.getElementsByClassName("dot");
     
-    if (!slides.length) return; // 如果页面没有轮播图元素，直接返回
+    if (!slides.length) return; // If the page does not have a slideshow element, return directly
     
-    // 处理索引越界
+    // Handling index out of bounds
     if (n > slides.length) {slideIndex = 1}
     if (n < 1) {slideIndex = slides.length}
     
-    // 隐藏所有幻灯片
+    // Hide all slides
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
     
-    // 移除所有导航点的激活状态
+    // Removes the activation status of all navigation points
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
     
-    // 显示当前幻灯片和激活相应的导航点
+    // Displays the current slide and activates the corresponding navigation point
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
 } 
